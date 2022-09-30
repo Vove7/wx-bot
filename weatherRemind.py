@@ -17,7 +17,7 @@ birthday = os.getenv('BIRTHDAY')
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
 
-user_ids = os.getenv('USER_ID', '').split("\n")
+user_ids = [n for n in os.getenv('USER_ID', '').split("\n") if len(n)]
 template_id = os.getenv('TEMPLATE_ID')
 
 if app_id is None or app_secret is None:
@@ -193,6 +193,6 @@ if __name__ == '__main__':
             count += 1
     except WeChatClientException as e:
         print('微信端返回错误：%s。错误代码：%d' % (e.errmsg, e.errcode))
-        exit(502)
+        
 
     print("发送了" + str(count) + "条消息")
