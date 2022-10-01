@@ -6,7 +6,8 @@ name: 定时发送提醒
 on:
   schedule:
     # 03:00 JST == 18:00 UTC
-    - cron:  "0 18 * * *"
+    # 23:00        14:00
+    - cron:  "30 23,14 * * *"
   workflow_dispatch:
 
 permissions:
